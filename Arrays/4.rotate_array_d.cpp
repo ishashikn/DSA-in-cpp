@@ -26,43 +26,30 @@ void rotateArray(vector<int> arr,int d){
 //space complexity: O(d)
 
 //Optimal
-void reverse(vector<int>& arr, int start, int end) {
-    while (start < end) {
+#include <iostream>
+#include <climits>
+#include <vector>
+using namespace std;
+void reverse(vector<int> &arr, int start,int end){
+    while(start < end){
         swap(arr[start], arr[end]);
-        start++;
-        end--;
+        start ++;
+        end --;
     }
 }
 
-// Function to rotate the array optimally
-void rotateArrayOptimal(vector<int>& arr, int d) {
-    int n = arr.size();
-    d = d % n; // In case d > n, adjust the number of rotations
-    // Reverse the first 'd' elements
-    reverse(arr, 0, d - 1);
-    // Reverse the remaining 'n - d' elements
-    reverse(arr, d, n - 1);
-    // Reverse the entire array
-    reverse(arr, 0, n - 1);
-}
-// Function to print the array
-void printArray(const vector<int>& arr) {
-    for (int i : arr) {
-        cout << i << " ";
-    }
-    cout << endl;
-}
 int main() {
-    vector<int> arr = {1, 4, 3, 2, 6, 5};
+    vector<int> arr = {1,2,3,4,5};
     int d = 2;
+    int n = arr.size();
+    d = d % n;
     
-    cout << "Original Array: ";
-    printArray(arr);
+    reverse(arr, 0, d-1);
+    reverse(arr, d, n-1);
+    reverse(arr, 0 , n-1);
     
-    rotateArrayOptimal(arr, d);
-    
-    cout << "Rotated Array: ";
-    printArray(arr);
-    
+    for(auto it: arr){
+        cout<< it << " ";
+    }
     return 0;
 }
